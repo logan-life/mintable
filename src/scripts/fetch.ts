@@ -72,11 +72,19 @@ export default async () => {
                                 transaction = undefined
                             }
                             if (rule.type === 'override' && transaction.hasOwnProperty(rule.property)) {
-                                transaction[rule.property] = (transaction[rule.property].toString() as String).replace(
-                                    new RegExp(rule.findPattern, rule.flags),
-                                    rule.replacePattern
-                                )
-                                countOverridden += 1
+                                // check if transaction[rule.property] is null
+                                if (transaction[rule.property] === null) {
+                                    transaction[rule.property] = 'ABN AMRO'
+                                    countOverridden += 1
+                                } else {
+                                    transaction[rule.property] = (transaction[
+                                        rule.property
+                                    ].toString() as String).replace(
+                                        new RegExp(rule.findPattern, rule.flags),
+                                        rule.replacePattern
+                                    )
+                                    countOverridden += 1
+                                }
                             }
                         }
                     })
