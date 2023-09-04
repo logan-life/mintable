@@ -1,0 +1,112 @@
+{
+"transactions": {
+    // "startDate": "2023-09-03",
+    // "endDate": "2023-09-03",
+    "integration": "google",
+    "properties": ["date", "amount", "name", "account", "category"],
+    "rules": [
+      {
+        "conditions": [
+          {
+            "property": "account",
+            "pattern": "MonetaryAccountBank",
+            "flags": "ig"
+          }
+        ],
+        "type": "override",
+        "property": "account",
+        "findPattern": "MonetaryAccountBank",
+        "replacePattern": "Bunq",
+        "flags": "ig"
+      },
+      // Stichting Derdengelden Househunting
+      {
+        "conditions": [
+          {
+            "property": "name",
+            "pattern": "Stichting Derdengelden Househunting",
+            "flags": "ig"
+          }
+        ],
+        "type": "override",
+        "property": "category",
+        "findPattern": "Recreation - Gyms and Fitness Centers",
+        "replacePattern": "Rent",
+        "flags": "ig"
+      },
+      // PostNL
+      {
+        "conditions": [
+          {
+            "property": "name",
+            "pattern": "PostNL",
+            "flags": "ig"
+          }
+        ],
+        "type": "override",
+        "property": "category",
+        "findPattern": "(Payment - Rent|Recreation - Arts and Entertainment)",
+        "replacePattern": "Mailing and Shipping",
+        "flags": "ig"
+      },
+      {
+        "conditions": [
+          {
+            "property": "name",
+            "pattern": "joint Checking -",
+            "flags": "ig"
+          }
+        ],
+        "type": "filter"
+      },
+      {
+        "conditions": [
+          {
+            "property": "category",
+            "pattern": "Payment",
+            "flags": "ig"
+          },
+          {
+            "property": "account",
+            "pattern": "(Apple Card - Logan|Apple Card - Jordan)",
+            "flags": "ig"
+          }
+        ],
+        "type": "filter"
+      },
+      {
+        "conditions": [
+          {
+            "property": "category",
+            "pattern": "(Other|Utilities)",
+            "flags": "ig"
+          },
+          {
+            "property": "account",
+            "pattern": "(Apple Card - Logan|Apple Card - Jordan)",
+            "flags": "ig"
+          }
+        ],
+        "type": "override",
+        "property": "category",
+        "findPattern": "(Other|Utilities)",
+        "replacePattern": "Subscriptions",
+        "flags": "ig"
+      },
+      {
+        "conditions": [
+          {
+            "property": "account",
+            "pattern": "(^[0-9]*$|^NULL$)",
+            "flags": "igs"
+          }
+        ],
+        "type": "override",
+        "property": "account",
+        "findPattern": "(^[0-9]*$|^NULL$)",
+        "replacePattern": "ABN AMRO",
+        "flags": "igs"
+      }
+    ]
+  }
+}
