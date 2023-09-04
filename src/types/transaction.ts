@@ -27,6 +27,9 @@ export interface Transaction {
     // industry or merchant category (e.g. Entertainment)
     category?: string
 
+    // supplementary category
+    category_2?: string
+
     // street address where the transaction occurred
     address?: string
     // city where the transaction occurred
