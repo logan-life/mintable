@@ -260,15 +260,64 @@ export class GoogleIntegration {
                                 }
                             },
                             {
+                                // automatically set date and amount column widths
                                 autoResizeDimensions: {
                                     dimensions: {
                                         sheetId: sheet.properties.sheetId,
                                         dimension: 'COLUMNS',
                                         startIndex: 0,
-                                        endIndex: sheet.properties.gridProperties.columnCount
+                                        endIndex: 2
                                     }
                                 }
-                            }
+                            },
+                            {
+                                // Set transaction name column width 
+                                updateDimensionProperties: {
+                                    range: {
+                                        sheetId: sheet.properties.sheetId,
+                                        dimension: 'COLUMNS',
+                                        startIndex: 2,
+                                        endIndex: 3
+                                    },
+                                    properties: {
+                                        pixelSize: 500
+                                    },
+                                    fields: 'pixelSize'
+                                }
+                            },
+                            {
+                                // Set account name column width
+                                updateDimensionProperties: {
+                                    range: {
+                                        sheetId: sheet.properties.sheetId,
+                                        dimension: 'COLUMNS',
+                                        startIndex: 3,
+                                        endIndex: 4
+                                    },
+                                    properties: {
+                                        pixelSize: 150
+                                    },
+                                    fields: 'pixelSize'
+                                }
+                            },
+                            {
+                                // Set category column width 
+                                updateDimensionProperties: {
+                                    range: {
+                                        sheetId: sheet.properties.sheetId,
+                                        dimension: 'COLUMNS',
+                                        startIndex: 4,
+                                        endIndex: 5
+                                    },
+                                    properties: {
+                                        pixelSize: 300
+                                    },
+                                    fields: 'pixelSize'
+                                }
+                            },
+                            
+                           
+
                         ])
                         .flat(10)
                 }
