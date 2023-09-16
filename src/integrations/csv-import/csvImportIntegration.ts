@@ -67,6 +67,11 @@ export class CSVImportIntegration {
                                         outputRow['amount'] = parseFloat(outputRow['amount'].toString().replace(pattern, ''))
                                     }
 
+                                    // set category_2 to -
+                                    if (!outputRow.hasOwnProperty('category_2')) {
+                                        outputRow['category_2'] = '-'
+                                    }
+
                                     // Parse dates
                                     if (outputRow.hasOwnProperty('date')) {
                                         outputRow['date'] = dateFns.parse(
