@@ -72,6 +72,11 @@ export class CSVImportIntegration {
                                         outputRow['category_2'] = '-'
                                     }
 
+                                     // set apple pay user to -
+                                     if (!outputRow.hasOwnProperty('apple_pay_user')) {
+                                        outputRow['apple_pay_user'] = '-'
+                                    }
+
                                     // Parse dates
                                     if (outputRow.hasOwnProperty('date')) {
                                         outputRow['date'] = dateFns.parse(

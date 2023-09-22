@@ -30,6 +30,9 @@ export interface Transaction {
     // supplementary category
     category_2?: string
 
+    // supplementary field for which apple pay user made the transaction
+    apple_pay_user?: string
+
     // street address where the transaction occurred
     address?: string
     // city where the transaction occurred

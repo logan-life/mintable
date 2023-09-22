@@ -236,6 +236,7 @@ export class PlaidIntegration {
                     pendingtransactionId: transaction.pending_transaction_id,
                     category: (transaction.category || []).join(' - '),
                     category_2: "-" ,
+                    apple_pay_user: "-",
                     address: transaction.location.address,
                     city: transaction.location.city,
                     state: transaction.location.region,
